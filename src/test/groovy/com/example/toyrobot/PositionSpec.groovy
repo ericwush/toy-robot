@@ -17,4 +17,9 @@ class PositionSpec extends Specification {
     y << [4, 7]
   }
 
+  def "test equals"() {
+    expect:
+    new Position(1, 2) == new Position(1, 2)
+  }
+
 }
