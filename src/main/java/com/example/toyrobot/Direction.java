@@ -5,22 +5,16 @@ import java.util.Optional;
 
 public enum Direction {
 
-  North(1, "NORTH"), East(2, "EAST"), South(3, "SOUTH"), West(4, "WEST");
+  NORTH(1), EAST(2), SOUTH(3), WEST(4);
 
   private final int index;
-  private final String name;
 
-  Direction(final int index, final String name) {
+  Direction(final int index) {
     this.index = index;
-    this.name = name;
-  }
-
-  public String getName() {
-    return name;
   }
 
   public static Optional<Direction> fromString(final String name) {
-    return Arrays.stream(Direction.values()).filter(direction -> direction.name.equals(name)).findFirst();
+    return Arrays.stream(Direction.values()).filter(direction -> direction.name().equals(name)).findFirst();
   }
 
   public Direction left() {

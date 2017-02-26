@@ -12,10 +12,10 @@ class RobotSpec extends Specification {
     new Robot(newPosition, direction, movement) == new Robot(position, direction, movement).move()
 
     where:
-    direction << [Direction.North, Direction.North,
-                  Direction.South, Direction.South,
-                  Direction.West, Direction.West,
-                  Direction.East, Direction.East]
+    direction << [Direction.NORTH, Direction.NORTH,
+                  Direction.SOUTH, Direction.SOUTH,
+                  Direction.WEST, Direction.WEST,
+                  Direction.EAST, Direction.EAST]
     position << [new Position(0, 4), new Position(0, 3),
                  new Position(0, 1), new Position(0, 0),
                  new Position(1, 0), new Position(0, 0),
@@ -33,8 +33,8 @@ class RobotSpec extends Specification {
     new Robot(position, newDirection, movement) == new Robot(position, direction, movement).left()
 
     where:
-    direction << [Direction.North, Direction.West, Direction.South, Direction.East]
-    newDirection << [Direction.West, Direction.South, Direction.East, Direction.North]
+    direction << [Direction.NORTH, Direction.WEST, Direction.SOUTH, Direction.EAST]
+    newDirection << [Direction.WEST, Direction.SOUTH, Direction.EAST, Direction.NORTH]
   }
 
   def "test right"() {
@@ -44,13 +44,13 @@ class RobotSpec extends Specification {
     new Robot(position, newDirection, movement) == new Robot(position, direction, movement).right()
 
     where:
-    direction << [Direction.North, Direction.West, Direction.South, Direction.East]
-    newDirection << [Direction.East, Direction.North, Direction.West, Direction.South]
+    direction << [Direction.NORTH, Direction.WEST, Direction.SOUTH, Direction.EAST]
+    newDirection << [Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH]
   }
 
   def "test report"() {
     expect:
-    "1,2,NORTH" == new Robot(new Position(1, 2), Direction.North, movement).report()
+    "1,2,NORTH" == new Robot(new Position(1, 2), Direction.NORTH, movement).report()
   }
 
 }

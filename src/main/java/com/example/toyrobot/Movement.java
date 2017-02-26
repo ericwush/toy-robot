@@ -14,16 +14,16 @@ public class Movement {
   public Function<Position, Optional<Position>> get(final Direction direction) {
     Function<Position, Optional<Position>> move = null;
     switch (direction) {
-      case East:
+      case EAST:
         move = east().andThen(newPosition());
         break;
-      case North:
+      case NORTH:
         move = north().andThen(newPosition());
         break;
-      case South:
+      case SOUTH:
         move = south().andThen(newPosition());
         break;
-      case West:
+      case WEST:
         move = west().andThen(newPosition());
         break;
     }

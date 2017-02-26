@@ -11,7 +11,7 @@ class MovementSpec extends Specification {
     def movement = new Movement(table)
 
     then:
-    newPosition == movement.get(Direction.East).apply(position)
+    newPosition == movement.get(Direction.EAST).apply(position)
 
     where:
     position << [new Position(3, 0), new Position(4, 0)]
@@ -23,7 +23,7 @@ class MovementSpec extends Specification {
     def movement = new Movement(table)
 
     then:
-    newPosition == movement.get(Direction.West).apply(position)
+    newPosition == movement.get(Direction.WEST).apply(position)
 
     where:
     position << [new Position(1, 0), new Position(0, 0)]
@@ -35,7 +35,7 @@ class MovementSpec extends Specification {
     def movement = new Movement(table)
 
     then:
-    newPosition == movement.get(Direction.North).apply(position)
+    newPosition == movement.get(Direction.NORTH).apply(position)
 
     where:
     position << [new Position(0, 3), new Position(0, 4)]
@@ -47,7 +47,7 @@ class MovementSpec extends Specification {
     def movement = new Movement(table)
 
     then:
-    newPosition == movement.get(Direction.South).apply(position)
+    newPosition == movement.get(Direction.SOUTH).apply(position)
 
     where:
     position << [new Position(0, 1), new Position(0, 0)]

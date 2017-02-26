@@ -10,8 +10,8 @@ class DirectionSpec extends Specification {
 
     where:
     directionString << ["EAST", "WEST", "NORTH", "SOUTH", "INVALID", "", null]
-    direction << [Optional.of(Direction.East), Optional.of(Direction.West), Optional.of(Direction.North),
-                  Optional.of(Direction.South), Optional.empty(), Optional.empty(), Optional.empty()]
+    direction << [Optional.of(Direction.EAST), Optional.of(Direction.WEST), Optional.of(Direction.NORTH),
+                  Optional.of(Direction.SOUTH), Optional.empty(), Optional.empty(), Optional.empty()]
   }
 
   def "test left direction"() {
@@ -19,8 +19,8 @@ class DirectionSpec extends Specification {
     newDirection == direction.left()
 
     where:
-    direction << [Direction.North, Direction.East, Direction.South, Direction.West]
-    newDirection << [Direction.West, Direction.North, Direction.East, Direction.South]
+    direction << [Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST]
+    newDirection << [Direction.WEST, Direction.NORTH, Direction.EAST, Direction.SOUTH]
   }
 
   def "test right direction"() {
@@ -28,8 +28,8 @@ class DirectionSpec extends Specification {
     newDirection == direction.right()
 
     where:
-    direction << [Direction.North, Direction.East, Direction.South, Direction.West]
-    newDirection << [Direction.East, Direction.South, Direction.West, Direction.North]
+    direction << [Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST]
+    newDirection << [Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.NORTH]
   }
 
 }

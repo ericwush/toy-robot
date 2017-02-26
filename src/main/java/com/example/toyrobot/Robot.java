@@ -31,7 +31,7 @@ public class Robot {
   }
 
   public String report() {
-    return position.toString() + "," + direction.getName();
+    return position.toString() + "," + direction.name();
   }
 
   @Override
