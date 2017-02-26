@@ -5,11 +5,11 @@ import spock.lang.Specification
 class RobotSpec extends Specification {
 
   def table = new Table(5)
-  def movement = new Movement(table)
+  def place = new Place(table)
 
   def "test move"() {
     expect:
-    new Robot(newPosition, direction, movement) == new Robot(position, direction, movement).move()
+    new Robot(newPosition, direction, place) == new Robot(position, direction, place).move()
 
     where:
     direction << [Direction.NORTH, Direction.NORTH,
@@ -30,7 +30,7 @@ class RobotSpec extends Specification {
     def position = new Position(1, 2)
 
     expect:
-    new Robot(position, newDirection, movement) == new Robot(position, direction, movement).left()
+    new Robot(position, newDirection, place) == new Robot(position, direction, place).left()
 
     where:
     direction << [Direction.NORTH, Direction.WEST, Direction.SOUTH, Direction.EAST]
@@ -41,7 +41,7 @@ class RobotSpec extends Specification {
     def position = new Position(1, 2)
 
     expect:
-    new Robot(position, newDirection, movement) == new Robot(position, direction, movement).right()
+    new Robot(position, newDirection, place) == new Robot(position, direction, place).right()
 
     where:
     direction << [Direction.NORTH, Direction.WEST, Direction.SOUTH, Direction.EAST]
@@ -50,7 +50,7 @@ class RobotSpec extends Specification {
 
   def "test report"() {
     expect:
-    "1,2,NORTH" == new Robot(new Position(1, 2), Direction.NORTH, movement).report()
+    "1,2,NORTH" == new Robot(new Position(1, 2), Direction.NORTH, place).report()
   }
 
 }

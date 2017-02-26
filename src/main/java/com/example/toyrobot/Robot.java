@@ -7,27 +7,32 @@ public class Robot {
 
   private final Position position;
   private final Direction direction;
-  private final Movement movement;
+  private final Place place;
 
-  public Robot(final Position position, final Direction direction, final Movement movement) {
+  public Robot(final Position position, final Direction direction, final Place place) {
     this.position = position;
     this.direction = direction;
-    this.movement = movement;
+    this.place = place;
+  }
+
+  public Optional<Robot> place() {
+    return place.newPosition().apply(position)
+        .map(newPosition -> new Robot(newPosition, direction, place));
   }
 
   public Robot move() {
-    Optional<Position> maybeNewPosition = movement.get(direction).apply(position);
+    Optional<Position> maybeNewPosition = place.move(direction).apply(position);
     return maybeNewPosition
-        .map(newPosition -> new Robot(newPosition, direction, movement))
+        .map(newPosition -> new Robot(newPosition, direction, place))
         .orElse(this);
   }
 
   public Robot left() {
-    return new Robot(position, direction.left(), movement);
+    return new Robot(position, direction.left(), place);
   }
 
   public Robot right() {
-    return new Robot(position, direction.right(), movement);
+    return new Robot(position, direction.right(), place);
   }
 
   public String report() {

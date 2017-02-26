@@ -2,16 +2,16 @@ package com.example.toyrobot
 
 import spock.lang.Specification
 
-class MovementSpec extends Specification {
+class PlaceSpec extends Specification {
 
   def table = new Table(5)
 
   def "test move east"() {
     when:
-    def movement = new Movement(table)
+    def place = new Place(table)
 
     then:
-    newPosition == movement.get(Direction.EAST).apply(position)
+    newPosition == place.move(Direction.EAST).apply(position)
 
     where:
     position << [new Position(3, 0), new Position(4, 0)]
@@ -20,10 +20,10 @@ class MovementSpec extends Specification {
 
   def "test move west"() {
     when:
-    def movement = new Movement(table)
+    def place = new Place(table)
 
     then:
-    newPosition == movement.get(Direction.WEST).apply(position)
+    newPosition == place.move(Direction.WEST).apply(position)
 
     where:
     position << [new Position(1, 0), new Position(0, 0)]
@@ -32,10 +32,10 @@ class MovementSpec extends Specification {
 
   def "test move north"() {
     when:
-    def movement = new Movement(table)
+    def place = new Place(table)
 
     then:
-    newPosition == movement.get(Direction.NORTH).apply(position)
+    newPosition == place.move(Direction.NORTH).apply(position)
 
     where:
     position << [new Position(0, 3), new Position(0, 4)]
@@ -44,14 +44,26 @@ class MovementSpec extends Specification {
 
   def "test move south"() {
     when:
-    def movement = new Movement(table)
+    def place = new Place(table)
 
     then:
-    newPosition == movement.get(Direction.SOUTH).apply(position)
+    newPosition == place.move(Direction.SOUTH).apply(position)
 
     where:
     position << [new Position(0, 1), new Position(0, 0)]
     newPosition << [Optional.of(new Position(0, 0)), Optional.empty()]
+  }
+
+  def "test new position"() {
+    when:
+    def place = new Place(table)
+
+    then:
+    newPosition == place.newPosition().apply(position)
+
+    where:
+    position << [new Position(0, 1), new Position(0, 6), new Position(-1, 3)]
+    newPosition << [Optional.of(new Position(0, 1)), Optional.empty(), Optional.empty()]
   }
 
 }
