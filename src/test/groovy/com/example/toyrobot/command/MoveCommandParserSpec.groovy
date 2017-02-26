@@ -6,11 +6,14 @@ class MoveCommandParserSpec extends Specification {
 
   def "test parse to move command"() {
     when:
-    def command = new MoveCommandParser().parse("MOVE")
+    def command = new MoveCommandParser().parse(commandString)
 
     then:
     command.isPresent()
     command.get().getClass() == MoveCommand
+
+    where:
+    commandString << ["MOVE", " MOVE", "MOVE "]
   }
 
   def "test cannot parse to move command"() {
