@@ -25,19 +25,21 @@ public class Position {
     if (this == o) {
       return true;
     }
-
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-
-    Position other = (Position) o;
-
-    return Objects.equals(x, other.x) && Objects.equals(y, other.y);
+    Position position = (Position) o;
+    return x == position.x && y == position.y;
   }
 
   @Override
   public int hashCode() {
     return Objects.hash(x, y);
+  }
+
+  @Override
+  public String toString() {
+    return x + "," + y;
   }
 
 }

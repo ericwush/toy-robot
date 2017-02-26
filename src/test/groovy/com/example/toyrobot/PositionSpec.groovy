@@ -22,4 +22,9 @@ class PositionSpec extends Specification {
     new Position(1, 2) == new Position(1, 2)
   }
 
+  def "test toString"() {
+    expect:
+    "1,2" == new Position(1, 2).toString()
+  }
+
 }

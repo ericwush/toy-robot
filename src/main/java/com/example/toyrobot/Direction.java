@@ -15,6 +15,10 @@ public enum Direction {
     this.name = name;
   }
 
+  public String getName() {
+    return name;
+  }
+
   public static Optional<Direction> fromString(final String name) {
     return Arrays.stream(Direction.values()).filter(direction -> direction.name.equals(name)).findFirst();
   }
