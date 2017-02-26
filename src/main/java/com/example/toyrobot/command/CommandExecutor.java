@@ -6,6 +6,9 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+/**
+ * I parse commands and execute valid ones
+ */
 public class CommandExecutor {
 
   private final CommandParser parser;

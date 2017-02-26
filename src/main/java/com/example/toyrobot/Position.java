@@ -2,6 +2,9 @@ package com.example.toyrobot;
 
 import java.util.Objects;
 
+/**
+ * I represent the position by coordinate
+ */
 public class Position {
 
   private final int x;

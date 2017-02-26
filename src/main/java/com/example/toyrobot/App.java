@@ -19,7 +19,8 @@ import java.util.stream.Stream;
 
 public class App {
 
-  public static void main(String[] args) throws IOException {
+  // Main entrance of the application
+  public static void main(final String[] args) throws IOException {
     List<CommandContext> contexts = new ArrayList<>();
     contexts.add(new CommandContext(Optional.empty(), new Table(5), Optional.empty()));
 

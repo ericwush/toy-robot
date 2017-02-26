@@ -19,8 +19,9 @@ public class PlaceCommand implements Command {
 
   @Override
   public CommandContext execute(final CommandContext context) {
+    Robot anyRobot = new Robot(position, direction, new Place(context.getTable()));
     return new CommandContext(
-        new Robot(position, direction, new Place(context.getTable())).place(),
+        anyRobot.place(),
         context.getTable(),
         Optional.empty());
   }

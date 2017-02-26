@@ -3,6 +3,9 @@ package com.example.toyrobot;
 import java.util.Optional;
 import java.util.function.Function;
 
+/**
+ * I have knowledge about tabletop so I know positions on the tabletop
+ */
 public class Place {
 
   private final Table table;

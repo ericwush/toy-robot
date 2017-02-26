@@ -3,6 +3,9 @@ package com.example.toyrobot.command;
 import java.util.Arrays;
 import java.util.Optional;
 
+/**
+ * I have a list of parsers which each parses a single command
+ */
 public class CommandLineParser implements CommandParser {
 
   private final CommandParser[] parsers;
