@@ -72,4 +72,12 @@ class RobotSpec extends Specification {
     "1,2,NORTH" == new Robot(new Position(1, 2), Direction.NORTH, place).report()
   }
 
+  def "test equals and hashcode"() {
+    expect:
+    new Robot(new Position(1, 2), Direction.NORTH, place) == new Robot(new Position(1, 2), Direction.NORTH, place)
+    null != new Robot(new Position(1, 2), Direction.NORTH, place)
+    new Object() != new Robot(new Position(1, 2), Direction.NORTH, place)
+    new Robot(new Position(1, 2), Direction.NORTH, place).hashCode() == new Robot(new Position(1, 2), Direction.NORTH, place).hashCode()
+  }
+
 }

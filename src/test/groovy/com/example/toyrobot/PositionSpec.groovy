@@ -17,9 +17,12 @@ class PositionSpec extends Specification {
     y << [4, 7]
   }
 
-  def "test equals"() {
+  def "test equals and hashcode"() {
     expect:
     new Position(1, 2) == new Position(1, 2)
+    null != new Position(1, 2)
+    new Object() != new Position(1, 2)
+    new Position(1, 2).hashCode() == new Position(1, 2).hashCode()
   }
 
   def "test toString"() {
