@@ -7,6 +7,25 @@ class RobotSpec extends Specification {
   def table = new Table(5)
   def place = new Place(table)
 
+  def "test place on tabletop"() {
+    when:
+    def position = new Position(1, 2)
+    def maybeRobot = new Robot(position, Direction.NORTH, place).place()
+
+    then:
+    maybeRobot.isPresent()
+    maybeRobot.get() == new Robot(position, Direction.NORTH, place)
+  }
+
+  def "test place off tabletop"() {
+    when:
+    def position = new Position(-1, 2)
+    def maybeRobot = new Robot(position, Direction.NORTH, place).place()
+
+    then:
+    !maybeRobot.isPresent()
+  }
+
   def "test move"() {
     expect:
     new Robot(newPosition, direction, place) == new Robot(position, direction, place).move()
