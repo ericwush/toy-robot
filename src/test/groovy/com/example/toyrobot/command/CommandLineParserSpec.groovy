@@ -9,12 +9,12 @@ class CommandLineParserSpec extends Specification {
   def leftCommandParser = new LeftCommandParser()
   def rightCommandParser = new RightCommandParser()
   def reportCommandParser = new ReportCommandParser()
-  def parsers = new CommandLineParser(placeCommandParser, moveCommandParser,
+  def parser = new CommandLineParser(placeCommandParser, moveCommandParser,
       leftCommandParser, rightCommandParser, reportCommandParser)
 
   def "test parsers parse command line to command"() {
     when:
-    def maybeCommand = parsers.parse(commandString)
+    def maybeCommand = parser.parse(commandString)
 
     then:
     maybeCommand.isPresent()
@@ -27,7 +27,7 @@ class CommandLineParserSpec extends Specification {
 
   def "test parsers cannot parse command line to command"() {
     when:
-    def maybeCommand = parsers.parse(commandString)
+    def maybeCommand = parser.parse(commandString)
 
     then:
     !maybeCommand.isPresent()
