@@ -16,7 +16,7 @@ class LeftCommandParserSpec extends Specification {
     commandString << ["LEFT", " LEFT", "LEFT "]
   }
 
-  def "test cannot parse to move command"() {
+  def "test cannot parse to left command"() {
     when:
     def command = new LeftCommandParser().parse(commandString)
 
