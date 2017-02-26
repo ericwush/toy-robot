@@ -13,23 +13,20 @@ public class PlaceCommandParser implements CommandParser {
   public Optional<Command> parse(final String commandLineString) {
     String[] commandLineStrings = commandLineString.trim().split(" ");
     if (isCommand(commandLineStrings[0], COMMAND_NAME)) {
-      boolean isValidCommand = true;
       if (commandLineStrings.length != 2) {
-        isValidCommand = false;
+        return Optional.empty();
       }
 
       String[] args = commandLineStrings[1].split(",");
       if (args.length != 3) {
-        isValidCommand = false;
+        return Optional.empty();
       }
 
-      if (isValidCommand) {
-        return parsePosition(args)
-            .map(maybePosition -> parseDirection(args)
-                .map(maybeDirection -> new PlaceCommand(maybePosition, maybeDirection)))
-            .filter(Optional::isPresent)
-            .map(Optional::get);
-      }
+      return parsePosition(args)
+          .map(maybePosition -> parseDirection(args)
+              .map(maybeDirection -> new PlaceCommand(maybePosition, maybeDirection)))
+          .filter(Optional::isPresent)
+          .map(Optional::get);
     }
     return Optional.empty();
   }

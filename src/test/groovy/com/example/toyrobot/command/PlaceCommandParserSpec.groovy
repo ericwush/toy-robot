@@ -31,7 +31,7 @@ class PlaceCommandParserSpec extends Specification {
 
     where:
     commandString << ["PLACE  1,2,NORTH", "PLACE a,5,SOUTH", "place 1,2,NORTH", "PLACE 1,2,north",
-                      "PLACE 1, 2,NORTH", "PLACE 1,2, NORTH"]
+                      "PLACE 1, 2,NORTH", "PLACE 1,2, NORTH", "PLACE 1,2,NORTH,SOUTH"]
 
   }
 
