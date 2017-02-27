@@ -5,12 +5,8 @@ import spock.lang.Specification
 class CommandLineParserSpec extends Specification {
 
   def placeCommandParser = new PlaceCommandParser()
-  def moveCommandParser = new MoveCommandParser()
-  def leftCommandParser = new LeftCommandParser()
-  def rightCommandParser = new RightCommandParser()
-  def reportCommandParser = new ReportCommandParser()
-  def parser = new CommandLineParser(placeCommandParser, moveCommandParser,
-      leftCommandParser, rightCommandParser, reportCommandParser)
+  def singleCommandNameParser = new SingleCommandNameParser()
+  def parser = new CommandLineParser(placeCommandParser, singleCommandNameParser)
 
   def "test parsers parse command line to command"() {
     when:

@@ -1,13 +1,6 @@
 package com.example.toyrobot;
 
-import com.example.toyrobot.command.CommandContext;
-import com.example.toyrobot.command.CommandExecutor;
-import com.example.toyrobot.command.CommandLineParser;
-import com.example.toyrobot.command.LeftCommandParser;
-import com.example.toyrobot.command.MoveCommandParser;
-import com.example.toyrobot.command.PlaceCommandParser;
-import com.example.toyrobot.command.ReportCommandParser;
-import com.example.toyrobot.command.RightCommandParser;
+import com.example.toyrobot.command.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,13 +18,9 @@ public class App {
     contexts.add(new CommandContext(Optional.empty(), new Table(5), Optional.empty()));
 
     PlaceCommandParser placeCommandParser = new PlaceCommandParser();
-    MoveCommandParser moveCommandParser = new MoveCommandParser();
-    LeftCommandParser leftCommandParser = new LeftCommandParser();
-    RightCommandParser rightCommandParser = new RightCommandParser();
-    ReportCommandParser reportCommandParser = new ReportCommandParser();
+    SingleCommandNameParser singleCommandNameParser = new SingleCommandNameParser();
 
-    CommandLineParser parser = new CommandLineParser(placeCommandParser, moveCommandParser,
-        leftCommandParser, rightCommandParser, reportCommandParser);
+    CommandLineParser parser = new CommandLineParser(placeCommandParser, singleCommandNameParser);
 
     CommandExecutor executor = new CommandExecutor(parser);
 

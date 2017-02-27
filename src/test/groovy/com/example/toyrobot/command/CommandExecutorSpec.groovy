@@ -12,12 +12,8 @@ class CommandExecutorSpec extends Specification {
   def table = new Table(5)
   def place = new Place(table)
   def placeCommandParser = new PlaceCommandParser()
-  def moveCommandParser = new MoveCommandParser()
-  def leftCommandParser = new LeftCommandParser()
-  def rightCommandParser = new RightCommandParser()
-  def reportCommandParser = new ReportCommandParser()
-  def parser = new CommandLineParser(placeCommandParser, moveCommandParser,
-      leftCommandParser, rightCommandParser, reportCommandParser)
+  def singleCommandNameParser = new SingleCommandNameParser()
+  def parser = new CommandLineParser(placeCommandParser, singleCommandNameParser)
   def executor = new CommandExecutor(parser)
 
   def "test execute valid commands"() {
