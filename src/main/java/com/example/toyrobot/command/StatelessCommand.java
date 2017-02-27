@@ -10,7 +10,7 @@ import java.util.function.Function;
 /**
  * I execute stateless robot related commands
  */
-public class RobotCommand implements Command {
+public class StatelessCommand implements Command {
 
   private final static Map<CommandType, Function<CommandContext, CommandContext>> COMMAND_MAP = new HashMap<>();
 
@@ -23,7 +23,7 @@ public class RobotCommand implements Command {
 
   private final CommandType commandType;
 
-  public RobotCommand(final CommandType commandType) {
+  public StatelessCommand(final CommandType commandType) {
     this.commandType = commandType;
   }
 

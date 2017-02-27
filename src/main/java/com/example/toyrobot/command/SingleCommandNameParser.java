@@ -12,10 +12,10 @@ public class SingleCommandNameParser implements CommandParser {
   private final static Map<CommandType, Class<? extends Command>> COMMAND_MAP = new HashMap<>();
 
   static {
-    COMMAND_MAP.put(CommandType.MOVE, RobotCommand.class);
-    COMMAND_MAP.put(CommandType.LEFT, RobotCommand.class);
-    COMMAND_MAP.put(CommandType.RIGHT, RobotCommand.class);
-    COMMAND_MAP.put(CommandType.REPORT, RobotCommand.class);
+    COMMAND_MAP.put(CommandType.MOVE, StatelessCommand.class);
+    COMMAND_MAP.put(CommandType.LEFT, StatelessCommand.class);
+    COMMAND_MAP.put(CommandType.RIGHT, StatelessCommand.class);
+    COMMAND_MAP.put(CommandType.REPORT, StatelessCommand.class);
   }
 
   @Override

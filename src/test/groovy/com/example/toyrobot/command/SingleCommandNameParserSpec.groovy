@@ -12,7 +12,7 @@ class SingleCommandNameParserSpec extends Specification {
 
     then:
     command.isPresent()
-    command.get().getClass() == RobotCommand
+    command.get().getClass() == StatelessCommand
 
     where:
     commandString << ["MOVE", " MOVE", "MOVE "]
@@ -35,7 +35,7 @@ class SingleCommandNameParserSpec extends Specification {
 
     then:
     command.isPresent()
-    command.get().getClass() == RobotCommand
+    command.get().getClass() == StatelessCommand
 
     where:
     commandString << ["LEFT", " LEFT", "LEFT "]
@@ -58,7 +58,7 @@ class SingleCommandNameParserSpec extends Specification {
 
     then:
     command.isPresent()
-    command.get().getClass() == RobotCommand
+    command.get().getClass() == StatelessCommand
 
     where:
     commandString << ["RIGHT", " RIGHT", "RIGHT "]
@@ -81,7 +81,7 @@ class SingleCommandNameParserSpec extends Specification {
 
     then:
     command.isPresent()
-    command.get().getClass() == RobotCommand
+    command.get().getClass() == StatelessCommand
 
     where:
     commandString << ["REPORT", " REPORT", "REPORT "]

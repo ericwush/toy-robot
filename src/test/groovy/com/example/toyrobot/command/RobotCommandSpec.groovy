@@ -14,7 +14,7 @@ class RobotCommandSpec extends Specification {
 
   def "test move on tabletop robot"() {
     when:
-    def command = new RobotCommand(CommandType.MOVE)
+    def command = new StatelessCommand(CommandType.MOVE)
     def robot = new Robot(position, Direction.NORTH, place)
     def context = new CommandContext(Optional.of(robot), table, Optional.empty())
     def newContext = command.execute(context)
@@ -32,7 +32,7 @@ class RobotCommandSpec extends Specification {
 
   def "test move off tabletop robot"() {
     when:
-    def command = new RobotCommand(CommandType.MOVE)
+    def command = new StatelessCommand(CommandType.MOVE)
     def context = new CommandContext(Optional.empty(), table, Optional.empty())
     def newContext = command.execute(context)
 
@@ -44,7 +44,7 @@ class RobotCommandSpec extends Specification {
 
   def "test left on tabletop robot"() {
     when:
-    def command = new RobotCommand(CommandType.LEFT)
+    def command = new StatelessCommand(CommandType.LEFT)
     def position = new Position(1, 3)
     def robot = new Robot(position, direction, place)
     def context = new CommandContext(Optional.of(robot), table, Optional.empty())
@@ -63,7 +63,7 @@ class RobotCommandSpec extends Specification {
 
   def "test left off tabletop robot"() {
     when:
-    def command = new RobotCommand(CommandType.LEFT)
+    def command = new StatelessCommand(CommandType.LEFT)
     def context = new CommandContext(Optional.empty(), table, Optional.empty())
     def newContext = command.execute(context)
 
@@ -75,7 +75,7 @@ class RobotCommandSpec extends Specification {
 
   def "test right on tabletop robot"() {
     when:
-    def command = new RobotCommand(CommandType.RIGHT)
+    def command = new StatelessCommand(CommandType.RIGHT)
     def position = new Position(1, 3)
     def robot = new Robot(position, direction, place)
     def context = new CommandContext(Optional.of(robot), table, Optional.empty())
@@ -94,7 +94,7 @@ class RobotCommandSpec extends Specification {
 
   def "test right off tabletop robot"() {
     when:
-    def command = new RobotCommand(CommandType.RIGHT)
+    def command = new StatelessCommand(CommandType.RIGHT)
     def context = new CommandContext(Optional.empty(), table, Optional.empty())
     def newContext = command.execute(context)
 
@@ -106,7 +106,7 @@ class RobotCommandSpec extends Specification {
 
   def "test report on tabletop robot"() {
     when:
-    def command = new RobotCommand(CommandType.REPORT)
+    def command = new StatelessCommand(CommandType.REPORT)
     def position = new Position(1, 3)
     def direction = Direction.NORTH
     def robot = new Robot(position, direction, place)
@@ -123,7 +123,7 @@ class RobotCommandSpec extends Specification {
 
   def "test report off tabletop robot"() {
     when:
-    def command = new RobotCommand(CommandType.REPORT)
+    def command = new StatelessCommand(CommandType.REPORT)
     def context = new CommandContext(Optional.empty(), table, Optional.empty())
     def newContext = command.execute(context)
 
