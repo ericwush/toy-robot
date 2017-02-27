@@ -15,22 +15,24 @@ public class Place {
   }
 
   public Function<Position, Optional<Position>> move(final Direction direction) {
-    Function<Position, Optional<Position>> move = null;
+    Function<Position, Position> moveByDirection = null;
+
     switch (direction) {
       case EAST:
-        move = east().andThen(newPosition());
+        moveByDirection = east();
         break;
       case NORTH:
-        move = north().andThen(newPosition());
+        moveByDirection = north();
         break;
       case SOUTH:
-        move = south().andThen(newPosition());
+        moveByDirection = south();
         break;
       case WEST:
-        move = west().andThen(newPosition());
+        moveByDirection = west();
         break;
     }
-    return move;
+
+    return moveByDirection.andThen(newPosition());
   }
 
   public Function<Position, Optional<Position>> newPosition() {
