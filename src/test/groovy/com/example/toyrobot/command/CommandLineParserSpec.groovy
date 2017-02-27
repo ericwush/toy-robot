@@ -18,7 +18,7 @@ class CommandLineParserSpec extends Specification {
 
     where:
     commandString << ["PLACE 1,2,SOUTH", "MOVE", "LEFT", "RIGHT", "REPORT"]
-    commandClass << [PlaceCommand, MoveCommand, LeftCommand, RightCommand, ReportCommand]
+    commandClass << [PlaceCommand, RobotCommand, RobotCommand, RobotCommand, RobotCommand]
   }
 
   def "test parsers cannot parse command line to command"() {

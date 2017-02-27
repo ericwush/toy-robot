@@ -9,31 +9,44 @@ import java.util.Optional;
  */
 public class SingleCommandNameParser implements CommandParser {
 
-  private final Map<String, Class<? extends Command>> singleCommandMap;
+  private final static Map<String, Class<? extends Command>> COMMAND_MAP = new HashMap<>();
 
-  public SingleCommandNameParser() {
-    singleCommandMap = new HashMap<>();
-    singleCommandMap.put("MOVE", MoveCommand.class);
-    singleCommandMap.put("LEFT", LeftCommand.class);
-    singleCommandMap.put("RIGHT", RightCommand.class);
-    singleCommandMap.put("REPORT", ReportCommand.class);
+  static {
+    COMMAND_MAP.put("MOVE", RobotCommand.class);
+    COMMAND_MAP.put("LEFT", RobotCommand.class);
+    COMMAND_MAP.put("RIGHT", RobotCommand.class);
+    COMMAND_MAP.put("REPORT", RobotCommand.class);
   }
 
   @Override
   public Optional<Command> parse(final String commandLineString) {
     Command command = null;
 
-    Optional<? extends Class<? extends Command>> maybeCommandClass =
-        singleCommandMap.entrySet().stream()
-            .filter(entry -> isCommand(commandLineString, entry.getKey()))
-            .map(Map.Entry::getValue)
-            .findFirst();
+//    Optional<? extends Class<? extends Command>> maybeCommandClass =
+//        COMMAND_MAP.entrySet().stream()
+//            .filter(entry -> isCommand(commandLineString, entry.getKey()))
+//            .map(Map.Entry::getValue)
+//            .findFirst();
+//
+//    if (maybeCommandClass.isPresent()) {
+//      Class<? extends Command> commandClass = maybeCommandClass.get();
+//      try {
+//        command = commandClass.newInstance();
+//      } catch (InstantiationException | IllegalAccessException e) {
+//        return Optional.empty();
+//      }
+//    }
 
-    if (maybeCommandClass.isPresent()) {
-      Class<? extends Command> commandClass = maybeCommandClass.get();
+    Optional<Map.Entry<String, Class<? extends Command>>> maybeCommand = COMMAND_MAP.entrySet().stream()
+        .filter(entry -> isCommand(commandLineString, entry.getKey()))
+        .findFirst();
+
+    if (maybeCommand.isPresent()) {
+      String name = maybeCommand.get().getKey();
+      Class<? extends Command> commandClass = maybeCommand.get().getValue();
       try {
-        command = commandClass.newInstance();
-      } catch (InstantiationException | IllegalAccessException e) {
+        command = commandClass.getDeclaredConstructor(String.class).newInstance(name);
+      } catch (Exception e) {
         return Optional.empty();
       }
     }
