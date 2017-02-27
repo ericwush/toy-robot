@@ -12,24 +12,24 @@ import java.util.function.Function;
  */
 public class RobotCommand implements Command {
 
-  private final static Map<String, Function<CommandContext, CommandContext>> COMMAND_MAP = new HashMap<>();
+  private final static Map<CommandType, Function<CommandContext, CommandContext>> COMMAND_MAP = new HashMap<>();
 
   static {
-    COMMAND_MAP.put("MOVE", move());
-    COMMAND_MAP.put("LEFT", left());
-    COMMAND_MAP.put("RIGHT", right());
-    COMMAND_MAP.put("REPORT", report());
+    COMMAND_MAP.put(CommandType.MOVE, move());
+    COMMAND_MAP.put(CommandType.LEFT, left());
+    COMMAND_MAP.put(CommandType.RIGHT, right());
+    COMMAND_MAP.put(CommandType.REPORT, report());
   }
 
-  private final String name;
+  private final CommandType commandType;
 
-  public RobotCommand(final String name) {
-    this.name = name;
+  public RobotCommand(final CommandType commandType) {
+    this.commandType = commandType;
   }
 
   @Override
   public CommandContext execute(final CommandContext context) {
-    return COMMAND_MAP.get(name).apply(context);
+    return COMMAND_MAP.get(commandType).apply(context);
   }
 
   private static Function<CommandContext, CommandContext> right() {

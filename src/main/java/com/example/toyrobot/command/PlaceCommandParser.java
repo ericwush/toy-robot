@@ -7,12 +7,12 @@ import java.util.Optional;
 
 public class PlaceCommandParser implements CommandParser {
 
-  private static final String COMMAND_NAME = "PLACE";
+  private static final CommandType COMMAND_TYPE = CommandType.PLACE;
 
   @Override
   public Optional<Command> parse(final String commandLineString) {
     String[] commandLineStrings = commandLineString.trim().split(" ");
-    if (isCommand(commandLineStrings[0], COMMAND_NAME)) {
+    if (isCommand(commandLineStrings[0], COMMAND_TYPE)) {
       if (commandLineStrings.length != 2) {
         return Optional.empty();
       }
